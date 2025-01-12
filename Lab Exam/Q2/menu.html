@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - La Maison D'Or</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">La Maison D'Or</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="menu.html">Menu</a>
+                <a href="about.html">About Us</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="menu-section">
+        <h1>Our Menu</h1>
+        
+        <div class="menu-filters">
+            <button class="btn" data-filter="all">All</button>
+            <button class="btn" data-filter="appetizers">Appetizers</button>
+            <button class="btn" data-filter="main">Main Course</button>
+            <button class="btn" data-filter="desserts">Desserts</button>
+            <button class="btn" data-filter="specials">Chef's Specials</button>
+        </div>
+
+        <div class="menu-grid">
+            <!-- Appetizers -->
+            <div class="menu-item" data-category="appetizers">
+                <img src="./item1.jpg" alt="French Onion Soup">
+                <div class="menu-item-content">
+                    <h3>French Onion Soup</h3>
+                    <p>Caramelized onions, rich beef broth, crusty bread, gruyère cheese</p>
+                    <span class="price">$16</span>
+                </div>
+            </div>
+
+            <!-- Main Course -->
+            <div class="menu-item" data-category="main">
+                <img src="./item2.jpg" alt="Coq au Vin">
+                <div class="menu-item-content">
+                    <h3>Coq au Vin</h3>
+                    <p>Braised chicken in red wine, pearl onions, mushrooms, lardons</p>
+                    <span class="price">$38</span>
+                </div>
+            </div>
+
+            <!-- Desserts -->
+            <div class="menu-item" data-category="desserts">
+                <img src="./item3.jpg" alt="Crème Brûlée">
+                <div class="menu-item-content">
+                    <h3>Crème Brûlée</h3>
+                    <p>Classic vanilla bean custard, caramelized sugar crust</p>
+                    <span class="price">$14</span>
+                </div>
+            </div>
+
+            <!-- Chef's Specials -->    
+            <div class="menu-item" data-category="specials">
+                <img src="./item4.jpg" alt="Duck Confit">
+                <div class="menu-item-content">
+                    <h3>Duck Confit</h3>
+                    <p>Slow-cooked duck leg, duck fat potatoes, cherry gastrique</p>
+                    <span class="price">$42</span>
+                </div>
+
+
+
+            <!-- More menu items... -->
+        </div>
+    </section>
+</body>
+</html>

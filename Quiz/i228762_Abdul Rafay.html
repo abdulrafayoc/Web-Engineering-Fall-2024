@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy of Google Forms</title>
+    <style>
+        /* apply google forms css */
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #deebff;
+            display:block;
+            align-items: center;
+            justify-content: center;   
+            padding: 20px 0px 30px 0px;         
+        }
+        form {
+                margin: 0 auto;
+                display: block;
+                max-width: 48%;
+        }
+        
+        .container{
+            border-radius: 12px;
+            margin: 10px 0;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 2px 4px 0 rgba(68, 68, 68, 0.1);
+        }
+        #bar{
+            background-color: #4285f4;
+            height: 8px;
+            width: 100%;
+            border-radius: 12px 12px 0 0;
+            
+        }
+        #header{
+            background-color: #ffffff;
+            border-radius: 12px;
+        }
+        label {
+            font-size: medium;
+        }
+        h1 {
+            margin: 0px;
+            font-size: 28px;
+            font-weight: 300;
+        }
+        
+        input[type="text"], input[type="email"], input[type="number"], select, textarea{
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            display: inline-block;
+            border: none;
+            border-bottom: 1px solid #bababa;
+            box-sizing: border-box;
+            text-decoration: none;
+            
+        }
+        /* remove decoraionon input fileds on  click */
+        input[type="text"]:focus, input[type="email"]:focus, input[type="number"]:focus, select:focus, textarea:focus{
+            outline: none;
+            border-bottom: 2px solid #4285f4;
+            margin-top: 10px;
+        }
+
+        input[type="radio"], input[type="checkbox"]{
+            margin: 5px;
+        }
+        #submit {
+            background-color: #634bff;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px 0 rgba(68, 68, 68, 0.1);
+        }
+        #submit :hover{
+            opacity: 0.8;
+        }
+        #clear {
+            background: none;
+            border: none;
+            cursor: pointer;
+
+        }
+        .buttons {
+            justify-content: space-between;
+            display: flex;
+        }
+        textarea{
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            display: inline-block;
+            border: 0px;
+            border-bottom: 1px solid #bababa;
+            box-sizing: border-box;
+            font-family:Arial, Helvetica, sans-serif
+        }
+        textarea:focus{
+            outline: none;
+            border-bottom: 2px solid #4285f4;
+        }
+        
+
+        
+       
+    </style>
+</head>
+<body>
+    <form id="form" action="submit.php" method="post">
+        <div id="header">
+            <div id="bar"></div>
+            <div class="container">
+                <h1>Web Conference Survey</h1>
+            </div>
+        </div>
+        <div class="container">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" placeholder="Name">
+        </div>
+        <div class="container">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="Email">
+        </div>
+        <div class="container">
+            <label for="phone">Phone Number</label>
+            <input type="number" name="password" id="phone" placeholder="+92">
+        </div>
+        <div class="container">
+            <label for="selection">Workshop Selection</label>
+            <select name="selection" id="selection">
+                <option value="web">Web Development</option>
+                <option value="app">App Development</option>
+                <option value="python">Python</option>
+                <option value="java">Java</option>
+            </select>
+        </div>
+        <div class="container">
+            <label for="age">Age</label>
+            <input type="number" name="age" id="age" placeholder="Age">
+        </div>
+        <div class="container">
+            <label for="gender">Gender</label><br>
+            <input type="radio" name="gender" value="male">Male</input><br>
+            <input type="radio" name="gender" value="female">Female</input><br>
+            <input type="radio" name="gender" value="other">Other</input><br>
+        </div>
+        <div class="container">
+            <label for="fav-tech" >Favourite Technology</label><br>
+            <input type="checkbox" name="fav-tech" value="python">Python</input><br>
+            <input type="checkbox" name="fav-tech" value="javascript">Javascript</input><br>
+            <input type="checkbox" name="fav-tech" value="cpp">C++</input><br>
+            <input type="checkbox" name="fav-tech" value="aiml">AI/ML</input>
+        </div>
+        <div class="container">
+            <label for="experience">Overall Experience</label>
+            <select name="experience" id="experience">
+                <option value="excellent">Excellent</option>
+                <option value="good">Good</option>
+                <option value="fair">Fair</option>
+                <option value="poor">Poor</option>
+            </select>
+        </div>
+        <div class="container">
+            <label for="comments">Comments</label>
+            <textarea name="comments" id="comments" placeholder="Comments"></textarea>
+
+        </div>
+        <div class="buttons">
+            <button id="submit" type="submit">Submit</button>
+            <button id="clear" type="clearform">Clear Form</button>
+        </div>
+    </form>
+
+    
+</body>
+</html>

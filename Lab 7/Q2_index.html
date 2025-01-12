@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development & IT Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-4">
+    <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6">
+        <h1 class="text-2xl font-bold text-center text-gray-800 mb-6">Web Development & IT Quiz</h1>
+        <form id="quizForm" class="space-y-6">
+            <div id="questions" class="space-y-6">
+                <!-- Questions will be dynamically added here -->
+            </div>
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors duration-200">
+                Submit Quiz
+            </button>
+        </form>
+        <div id="result" class="mt-6 text-center font-bold text-lg hidden"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const quizQuestions = [
+                {
+                    question: "What does HTML stand for?",
+                    options: [
+                        "Hyper Text Markup Language",
+                        "Home Tool Markup Language",
+                        "Hyperlinks and Text Markup Language",
+                        "High Tech Modern Language"
+                    ],
+                    correctAnswer: 0
+                },
+                {
+                    question: "Which of the following is a JavaScript framework?",
+                    options: [
+                        "Django",
+                        "Flask",
+                        "Laravel",
+                        "React"
+                    ],
+                    correctAnswer: 3
+                },
+                {
+                    question: "What is CSS used for?",
+                    options: [
+                        "To create server-side logic",
+                        "To style and layout web pages",
+                        "To create databases",
+                        "To handle user authentication"
+                    ],
+                    correctAnswer: 1
+                },
+                {
+                    question: "Which protocol is used to transfer web pages?",
+                    options: [
+                        "FTP",
+                        "SMTP",
+                        "HTTP",
+                        "SSH"
+                    ],
+                    correctAnswer: 2
+                }
+            ];
+
+            const questionsContainer = document.getElementById('questions');
+            const quizForm = document.getElementById('quizForm');
+            const resultDiv = document.getElementById('result');
+
+            // Generate quiz questions
+            quizQuestions.forEach((q, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.classList.add('space-y-2');
+                
+                questionDiv.innerHTML = `
+                    <h2 class="text-lg font-semibold text-gray-700">${index + 1}. ${q.question}</h2>
+                    <div class="space-y-2">
+                        ${q.options.map((option, optionIndex) => `
+                            <label class="flex items-center p-3 border rounded-md hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" name="q${index}" value="${optionIndex}" required class="mr-2">
+                                <span>${option}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                `;
+                
+                questionsContainer.appendChild(questionDiv);
+            });
+
+            // Handle form submission
+            quizForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                let score = 0;
+                quizQuestions.forEach((q, index) => {
+                    const answer = parseInt(document.querySelector(`input[name="q${index}"]:checked`)?.value);
+                    if (answer === q.correctAnswer) {
+                        score++;
+                    }
+                });
+
+                // Calculate percentage
+                const percentage = (score / quizQuestions.length) * 100;
+                
+                // Display result
+                resultDiv.textContent = `Your score is: ${score}/${quizQuestions.length}`;
+                resultDiv.classList.remove('hidden', 'text-green-500', 'text-red-500');
+                
+                if (percentage >= 50) {
+                    resultDiv.classList.add('text-green-500');
+                } else {
+                    resultDiv.classList.add('text-red-500');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

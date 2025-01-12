@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokédex</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      #heading {
+        margin-bottom: 1.5rem;
+        background-color: #ff5555;
+        padding: 1rem;
+        border-radius: 5px 5px 0 0;
+        color: white;
+      }
+
+      #pokemon-card {
+        margin-top: 1.5rem;
+        background-color: #f9f9f9;
+        padding: 1rem;
+        border-radius: 0 0 5px 5px;
+      }
+    </style>
+  </head>
+  <body class="bg-red-500 min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white rounded-lg shadow-lg w-full max-w-lg p-0">
+      <div id="heading" class="flex flex-row mb-6 justify-between">
+        <h1 class="text-3xl font-bold mb-4 text-center">Pokédex</h1>
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/188/188918.png"
+          alt="Pokémon logo"
+          class="mb-4 h-10"
+        />
+      </div>
+      <form id="search-form" class="p-6 mb-6">
+        <div class="flex">
+          <input
+            type="text"
+            id="pokemon-name"
+            placeholder="Enter Pokémon name"
+            class="flex-grow px-4 py-2 rounded-l-lg border-2 border-blue-500 focus:outline-none focus:border-blue-600"
+            required
+          />
+          <button
+            type="submit"
+            class="bg-blue-500 text-white px-4 py-2 rounded-r-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          >
+            Search
+          </button>
+        </div>
+      </form>
+      <div id="loading" class="hidden">
+        <div
+          class="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full mx-auto mb-4 animate-[spin_1s_linear_infinite]"
+        ></div>
+        <p class="text-center text-gray-600">Loading...</p>
+      </div>
+      <div id="error" class="hidden text-red-500 text-center mb-4"></div>
+      <div id="pokemon-card" class="hidden">
+        <h2 id="pokemon-name" class="text-2xl font-bold mb-4 text-center"></h2>
+        <img
+          id="pokemon-sprite"
+          class="w-full mb-4 bg-gray-100 rounded-lg p-4"
+          alt="Pokémon sprite"
+        />
+        <div class="grid grid-cols-2 gap-4 mb-4">
+          <div>
+            <h3 class="font-semibold">Type(s):</h3>
+            <p id="pokemon-types"></p>
+          </div>
+          <div>
+            <h3 class="font-semibold">Height:</h3>
+            <p id="pokemon-height"></p>
+          </div>
+          <div>
+            <h3 class="font-semibold">Weight:</h3>
+            <p id="pokemon-weight"></p>
+          </div>
+        </div>
+        <h3 class="font-semibold mb-2">Base Stats:</h3>
+        <div id="pokemon-stats" class="space-y-2"></div>
+      </div>
+    </div>
+    <script>
+      const typeColors = {
+        normal: "#A8A878",
+        fire: "#F08030",
+        water: "#6890F0",
+        electric: "#F8D030",
+        grass: "#78C850",
+        ice: "#98D8D8",
+        fighting: "#C03028",
+        poison: "#A040A0",
+        ground: "#E0C068",
+        flying: "#A890F0",
+        psychic: "#F85888",
+        bug: "#A8B820",
+        rock: "#B8A038",
+        ghost: "#705898",
+        dragon: "#7038F8",
+        dark: "#705848",
+        steel: "#B8B8D0",
+        fairy: "#EE99AC",
+      };
+      const searchForm = document.getElementById("search-form");
+      const pokemonNameInput = document.getElementById("pokemon-name");
+      const loadingElement = document.getElementById("loading");
+      const errorElement = document.getElementById("error");
+      const pokemonCard = document.getElementById("pokemon-card");
+
+      searchForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const pokemonName = pokemonNameInput.value.toLowerCase();
+
+        loadingElement.classList.remove("hidden");
+        errorElement.classList.add("hidden");
+        pokemonCard.classList.add("hidden");
+
+        try {
+            if (!isNaN(pokemonName)) {
+                throw new Error("Please enter a valid Pokémon name");
+            }
+          const response = await fetch(
+            `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
+          );
+          if (!response.ok) {
+            throw new Error("Pokémon not found");
+          }
+          const data = await response.json();
+          displayPokemonData(data);
+        } catch (error) {
+          errorElement.textContent = error.message;
+          errorElement.classList.remove("hidden");
+        } finally {
+          loadingElement.classList.add("hidden");
+        }
+      });
+
+      function displayPokemonData(data) {
+        document.getElementById("pokemon-name").textContent =
+          data.name.charAt(0).toUpperCase() + data.name.slice(1);
+        document.getElementById("pokemon-sprite").src =
+          data.sprites.front_default;
+          // use pokemon colors in pills of types
+        document.getElementById("pokemon-types").innerHTML = data.types
+            .map(
+                (type) =>
+                `<span class="px-2 py-1 rounded-full bg-${type.type.name}" style="background-color: ${typeColors[type.type.name]}">${type.type.name}</span>`
+            )
+          document.getElementById("pokemon-height").textContent = `${
+          data.height / 10
+        } m`;
+        document.getElementById("pokemon-weight").textContent = `${
+          data.weight / 10
+        } kg`;
+
+        const statsElement = document.getElementById("pokemon-stats");
+        statsElement.innerHTML = "";
+        data.stats.slice(0, 3).forEach((stat) => {
+          const statElement = document.createElement("div");
+          statElement.innerHTML = `
+                    <div class="flex items-center">
+                        <span class="w-20">${stat.stat.name}:</span>
+                        <div class="flex-grow bg-gray-200 rounded-full h-2.5 ml-2">
+                            <div class="bg-blue-600 h-2.5 rounded-full" style="width: ${
+                              (stat.base_stat / 255) * 100
+                            }%"></div>
+                        </div>
+                        <span class="ml-2">${stat.base_stat}</span>
+                    </div>
+                `;
+          statsElement.appendChild(statElement);
+        });
+
+        pokemonCard.classList.remove("hidden");
+      }
+    </script>
+  </body>
+</html>

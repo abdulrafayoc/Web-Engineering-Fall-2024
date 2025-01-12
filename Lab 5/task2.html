@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Image Gallery</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns by default */
+    gap: 20px;
+    padding: 20px;
+}
+
+.gallery-item {
+    overflow: hidden; /* To contain the enlarged image on hover */
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out; /* Smooth hover effect */
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1); /* Enlarge on hover */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add shadow */
+}
+
+/* Media Queries */
+@media (max-width: 1199px) { /* Medium screens */
+    .gallery-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    body {
+        font-size: 20px;
+    }
+    header {
+        padding: 15px;
+    }
+    .gallery-container {
+        padding: 15px;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 767px) { /* Small screens */
+    .gallery-container {
+        grid-template-columns: 1fr;
+    }
+    body {
+        font-size: 18px;
+    }
+    header {
+        padding: 10px;
+    }
+    .gallery-container {
+        padding: 10px;
+        gap: 10px;
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Image Gallery</h1>
+    </header>
+
+    <main>
+        <div class="gallery-container">
+            <div class="gallery-item"><img src="https://fixquotes.com/photo/author/friedrich-nietzsche_7GDfD_800.jpg" alt="Image 1"></div>
+            <div class="gallery-item"><img src="https://static.echinacities.com/upload/editor/Confucius.jpg" alt="Image 2"></div>
+            <div class="gallery-item"><img src="https://klimbim2014.wordpress.com/wp-content/uploads/2016/11/arthur-schopenhauer-1859.jpg?w=1140" alt="Image 3"></div>
+            <div class="gallery-item"><img src="https://miro.medium.com/v2/resize:fit:661/1*dLROlsQo83kqEJpdo865cQ.png" alt="Image 4"></div>
+            <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Galileo_Galilei_%281564-1642%29_RMG_BHC2700.tiff/lossy-page1-1200px-Galileo_Galilei_%281564-1642%29_RMG_BHC2700.tiff.jpg" alt="Image 4"></div>
+            <div class="gallery-item"><img src="https://hips.hearstapps.com/hmg-prod/images/socrates-gettyimages-51242028.jpg" alt="Image 4"></div>
+            <div class="gallery-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT47D0z5yWOHFbjbsy7uj5w3kmNGC_P7qc-KQ&s" alt="Image 4"></div>
+            <div class="gallery-item"><img src="https://tctdev.wpenginepowered.com/wp-content/uploads/2021/05/IMG_7667-1024x631.jpeg" alt="Image 4"></div>
+        </div>
+    </main>
+</body>
+</html>

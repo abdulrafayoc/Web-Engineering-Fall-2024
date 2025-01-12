@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layout using Flexbox</title>
+    <link rel="stylesheet" href="./task5.css" />
+  </head>
+  <body>
+    <header>
+      <h2>Form for lab</h2>
+    </header>
+    <section>
+      <div class="welcome-div">
+		<div class="welcome">
+			<h3>Welcome new User</h3>
+		</div>
+      </div>
+      <form action="https://formspree.io/f/meojwebv" method="POST">
+        <div class="form-part">
+          <label for="" class="heading">Introduction Questions</label>
+          <div class="intro">
+            <input type="text" id="name" name="name" placeholder="Name" />
+            <input
+              type="date"
+              id="date"
+              name="date"
+              placeholder="Date of Birth"
+            />
+            <input
+              type="text"
+              id="nickname"
+              name="nickname"
+              placeholder="Nickname"
+            />
+          </div>
+        </div>
+		<label class="heading" for="">Choose your birth province</label>
+          <div class="provinces">
+            <div class="province-card">
+              <input type="radio" id="punjab" name="province" value="punjab" />
+              <label for="punjab">
+                <img
+                  class="province-img"
+                  src="https://cdn.britannica.com/46/3346-050-DE92F66A/flag-symbolism-Pakistan-design-Islamic.jpg"
+                  alt=""
+                />
+                <p class="province-info">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Inventore cum, atque ab quisquam, asperiores voluptate
+                  nesciunt aperiam autem eveniet rem reiciendis natus dolorum
+                  porro nam voluptatum quasi quae aliquam debitis.
+                </p>
+              </label>
+            </div>
+            <div class="province-card">
+              <input type="radio" id="sindh" name="province" value="sindh" />
+              <label for="sindh">
+                <img
+                  class="province-img"
+                  src="https://cdn.britannica.com/46/3346-050-DE92F66A/flag-symbolism-Pakistan-design-Islamic.jpg"
+                  alt=""
+                />
+                <p class="province-info">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste
+                  aliquid accusantium ducimus impedit repellendus. Quos earum
+                  doloribus accusamus doloremque commodi ut ab recusandae fuga
+                  maxime. Perferendis voluptatibus quae sunt repellat?
+                </p>
+              </label>
+            </div>
+            <div class="province-card">
+              <input type="radio" id="balochistan" name="province" value="balochistan" />
+              <label for="balochistan">
+                <img
+                  class="province-img"
+                  src="https://cdn.britannica.com/46/3346-050-DE92F66A/flag-symbolism-Pakistan-design-Islamic.jpg"
+                  alt=""
+                />
+                <p class="province-info">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit
+                </p>
+              </label>
+            </div>
+            <div class="province-card">
+              <input type="radio" id="kpk" name="province" value="kpk" />
+              <label for="kpk">
+                <img
+                  class="province-img"
+                  src="https://cdn.britannica.com/46/3346-050-DE92F66A/flag-symbolism-Pakistan-design-Islamic.jpg"
+                  alt=""
+                />
+                <p class="province-info">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit
+                </p>
+              </label>
+            </div>
+            <div class="province-card">
+              <input type="radio" id="gilgit" name="province" value="gilgit" />
+              <label for="gilgit">
+                <img
+                  class="province-img"
+                  src="https://cdn.britannica.com/46/3346-050-DE92F66A/flag-symbolism-Pakistan-design-Islamic.jpg"
+                  alt=""
+                />
+                <p class="province-info">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit
+                </p>
+              </label>
+            </div>
+          </div>
+        
+        <button>
+            Submit
+        </button>
+      </form>
+    </section>
+	<footer>
+		<p>Developed by: <a href="https://www.linkedin.com/in/hamza-ahmed-0b1b3b1b1/">made with love</a></p>
+	</footer>
+
+  </body>
+</html>

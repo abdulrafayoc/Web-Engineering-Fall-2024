@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery DOM Manipulation Tasks</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        h2 {
+            margin-top: 0;
+        }
+        #task2-div {
+            background-color: #f0f0f0;
+            padding: 10px;
+        }
+        #task4-info {
+            display: none;
+        }
+        .error {
+            color: red;
+        }
+        .item {
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>jQuery DOM Manipulation Tasks</h1>
+
+    <section id="task1">
+        <h2>Task 1: Changing Text Content</h2>
+        <p id="task1-paragraph">This is the original text.</p>
+        <button id="task1-button">Change Text</button>
+    </section>
+
+    <section id="task2">
+        <h2>Task 2: Styling Elements</h2>
+        <div id="task2-div">Hover over this div to change its background color.</div>
+    </section>
+
+    <section id="task3">
+        <h2>Task 3: Form Validation</h2>
+        <form id="task3-form">
+            <input type="email" id="task3-email" placeholder="Enter your email">
+            <button type="submit">Submit</button>
+        </form>
+        <p id="task3-error" class="error"></p>
+    </section>
+
+    <section id="task4">
+        <h2>Task 4: Toggling Visibility</h2>
+        <button id="task4-button">Toggle Information</button>
+        <div id="task4-info">This is some extra information.</div>
+    </section>
+
+    <section id="task5">
+        <h2>Task 5: Creating a Dynamic List</h2>
+        <input type="text" id="task5-input" placeholder="Enter an item">
+        <button id="task5-button">Add Item</button>
+        <ul id="task5-list"></ul>
+    </section>
+
+    <section id="task6">
+        <h2>Task 6: Counting Clicks</h2>
+        <button id="task6-button">Click Me</button>
+        <p id="task6-count">Click count: 0</p>
+    </section>
+
+    <section id="task7">
+        <h2>Task 7: Using Query Selectors</h2>
+        <span class="item">Item 1</span>
+        <span class="item">Item 2</span>
+        <span class="item">Item 3</span>
+        <br>
+        <button id="task7-button">Update Items</button>
+    </section>
+
+    <script>
+    $(document).ready(function() {
+        // Task 1: Changing Text Content
+        $('#task1-button').click(function() {
+            $('#task1-paragraph').text("Hello, World!");
+        });
+
+        // Task 2: Styling Elements
+        var originalColor = $('#task2-div').css('background-color');
+        $('#task2-div').hover(
+            function() {
+                $(this).css('background-color', 'yellow');
+            },
+            function() {
+                $(this).css('background-color', originalColor);
+            }
+        );
+
+        // Task 3: Form Validation
+        $('#task3-form').submit(function(e) {
+            e.preventDefault();
+            var email = $('#task3-email').val();
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                $('#task3-error').text("Please enter a valid email address.");
+            } else {
+                $('#task3-error').text("");
+                alert("Form submitted successfully!");
+            }
+        });
+
+        // Task 4: Toggling Visibility
+        $('#task4-button').click(function() {
+            $('#task4-info').toggle();
+        });
+
+        // Task 5: Creating a Dynamic List
+        $('#task5-button').click(function() {
+            var input = $('#task5-input');
+            if (input.val().trim() !== '') {
+                $('#task5-list').append('<li>' + input.val() + '</li>');
+                input.val('');
+            }
+        });
+
+        // Task 6: Counting Clicks
+        var clickCount = 0;
+        $('#task6-button').click(function() {
+            clickCount++;
+            $('#task6-count').text('Click count: ' + clickCount);
+        });
+
+        // Task 7: Using Query Selectors
+        $('#task7-button').click(function() {
+            $('.item').text("Updated!");
+        });
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+console.log("includes(): Kisi array mein koi khaas value hai ya nahi ye determine karta hai, jo ke true ya false return karta hai.")
+console.log("every(): Ye test karta hai ke kya array ke sare elements pass karte hain ya nahi.")
+console.log("filter(): Ye ek naya array banata hai jismein wo sare elements hote hain jo ke provided function ke test pass karte hain.")
+console.log("join(): Ye ek naya string banata hai jismein sare elements ko concatenate karke ek string banata hai.")
+console.log("some(): Ye test karta hai ke kya array mein kam se kam ek element pass karta hai ya nahi.")
+console.log("splice(): Ye array ke contents ko change karta hai by removing ya replacing existing elements and/or adding new elements in place. Ye ek array return karta hai jo ke deleted elements ko contain karta hai.")
